@@ -73,7 +73,7 @@ for table_name in $(toml_get_table_names); do
 	cli_src=$(toml_get "$t" cli-source) || cli_src=$DEF_CLI_SRC
 	cli_src_host=$(toml_get "$t" cli-source-host) || cli_src_host=$DEF_CLI_SRC_HOST
 	cli_ver=$(toml_get "$t" cli-version) || cli_ver=$DEF_CLI_VER
-	if ! isoneof "$cli_src_host" github gitlab; then abort "ERROR: cli-source-host '$cli_src_host' is not a valid option for '$table_name': only 'github' or 'gitlab' is allowed"; fi
+	if ! isoneof "$cli_src_host" github gitlab direct; thenn abort "ERROR: cli-source-host '$cli_src_host' is not a valid option for '$table_name': only 'github' or 'gitlab' is allowed"; fi
 
 	# Parse patch sources: may be a single string or multiline (quoted list)
 	IFS=$'\n'
